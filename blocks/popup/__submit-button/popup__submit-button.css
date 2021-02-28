@@ -9,6 +9,7 @@
   cursor: pointer;
   box-sizing: border-box;
   padding: 0;
+  border-radius: 2px;
 }
 
 .popup__submit-button:focus {
