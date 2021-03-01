@@ -12,26 +12,26 @@ let profileSubTitle = document.querySelector('.profile__subtitle');
 
 // let likeButtons = document.querySelectorAll('.element__like');
 
-function toggleShowPopup() {
-  if (nameInput.value === '') {
-    nameInput.value = profileTitle.textContent;
-  }
+function showPopup() {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubTitle.textContent;
 
-  if (jobInput.value === '') {
-    jobInput.value = profileSubTitle.textContent;
-  }
+  popup.classList.add('popup_opened');
+  body.classList.add('body_disabled-scroll'); 
+}
 
-  popup.classList.toggle('popup_opened');
-  body.classList.toggle('body_disabled-scroll'); 
+function hidePopup() {
+  popup.classList.remove('popup_opened');
+  body.classList.remove('body_disabled-scroll'); 
 }
 
 // for (let i = 0; i < likeButtons.length; i++) {
 //   likeButtons[i].addEventListener('click', toggleActiveLikeButton);
 // }
 
-function toggleActiveLikeButton(event) {
-  event.target.classList.toggle('element__like_active');
-}
+// function toggleActiveLikeButton(event) {
+//   event.target.classList.toggle('element__like_active');
+// }
 
 function submit(event) {
   event.preventDefault();
@@ -39,14 +39,14 @@ function submit(event) {
   profileTitle.textContent = nameInput.value;
   profileSubTitle.textContent = jobInput.value;
   
-  toggleShowPopup();
+  hidePopup();
 }
 
 form.addEventListener('submit', submit);
 
-editPopupButton.addEventListener('click', toggleShowPopup);
-closePopupButton.addEventListener('click', toggleShowPopup);
-popup.addEventListener('click', toggleShowPopup);
+editPopupButton.addEventListener('click', showPopup);
+closePopupButton.addEventListener('click', hidePopup);
+popup.addEventListener('click', hidePopup);
 popupContainer.addEventListener('click', function(event) {
   event.stopPropagation();
 });
