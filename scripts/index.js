@@ -39,15 +39,26 @@ const cardContainer = document.querySelector('.element');
 const cardTemplate = document.querySelector('#element__card-template').content;
 const closePopupButtons = document.querySelectorAll('.popup__close');
 
+
 function showPopup(popup) {
   popup.classList.add('popup_opened');
-  body.classList.add('body_disabled-scroll'); 
+  body.classList.add('body_disabled-scroll');
+  document.addEventListener('keydown', hidePopupByEsc);
 }
 
 function hidePopup(popup) {
   popup.classList.remove('popup_opened');
   body.classList.remove('body_disabled-scroll'); 
+  document.removeEventListener('keydown', hidePopupByEsc);
 }
+
+function hidePopupByEsc (event) {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (event.key === 'Escape') {
+    hidePopup(openedPopup);
+  }
+}
+
 
 function toggleActiveLikeButton(event) {
   event.target.classList.toggle('element__like_active');
@@ -127,12 +138,13 @@ addPopupButton.addEventListener('click', () => {
 
 editPopupButton.addEventListener('click', () => {
   showPopup(editProfilePopup);
-
+  
   const nameInput = formEditProfile['name-input'];
   const jobInput = formEditProfile['job-input'];
   
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubTitle.textContent;
+
   formEditProfile.addEventListener('submit', submitFormEditProfile);
 });
 
@@ -148,3 +160,5 @@ closePopupButtons.forEach((btn) => {
   popupContainer.addEventListener('click', (event) => event.stopPropagation());
   btn.addEventListener('click', () => hidePopup(popup));
 });
+
+ //escPopupButton.addEventListener('keydown', )
