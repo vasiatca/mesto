@@ -19,8 +19,6 @@ function showPopup(popup) {
   document.addEventListener('keydown', hidePopupByEsc);
 
   popup.addEventListener('click', hidePopupOnOverlay);
-
-  hidePopupOnCloseButton(popup);
 }
 
 function hidePopup(popup) {
@@ -39,9 +37,13 @@ function hidePopupByEsc(event) {
   }
 }
 
-function hidePopupOnCloseButton(popup) {
-  const hidePopupButton = popup.querySelector('.popup__close');
-  hidePopupButton.addEventListener('click', () => hidePopup(popup));
+function closePopupButton(btn) {
+  const popup = btn.closest('.popup'); 
+  const popupContainer = popup.querySelector('.popup__container'); 
+  
+  popup.addEventListener('click', () => hidePopup(popup)); 
+  popupContainer.addEventListener('click', (event) => event.stopPropagation()); 
+  btn.addEventListener('click', () => hidePopup(popup)); 
 }
 
 function hidePopupOnOverlay(event) {
@@ -75,7 +77,7 @@ function prependCard(card) {
   cardContainer.prepend(element);
 }
 
-function renderCard (item, prepend = false) {
+function renderCard(item, prepend = false) {
   const card = new Card(item, '#element__card-template');
 
   if (!prepend) {
@@ -141,5 +143,6 @@ export {
   renderCard,
   initialValidator,
   editPopup,
-  addCardPopup
+  addCardPopup,
+  closePopupButton
 }

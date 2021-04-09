@@ -51,6 +51,8 @@ const formEditProfile = document.forms['edit-profile'];
 const profileTitle = document.querySelector('.profile__title');
 const profileSubTitle = document.querySelector('.profile__subtitle');
 
+const buttonsClosePopup = document.querySelectorAll('.popup__close');
+
 
 export {
   initialCards,
@@ -66,6 +68,7 @@ export {
   formAddCard,
   formEditProfile,
   profileTitle,
-  profileSubTitle
+  profileSubTitle,
+  buttonsClosePopup
 }
 
