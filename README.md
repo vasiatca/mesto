@@ -10,6 +10,9 @@
 - HTML
 - CSS ( Flex , Grid ) , БЭМ
 - JavaScript
+- Webpack
+- babel
+- postcss
 
 **Figma**
 

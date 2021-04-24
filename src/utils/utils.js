@@ -9,61 +9,61 @@ import {
   popupAddCard,
   popupEditProfile
 } from './constants.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
 
-function showPopup(popup) {
-  popup.classList.add('popup_opened');
-  body.classList.add('body_disabled-scroll');
+// function showPopup(popup) {
+//   popup.classList.add('popup_opened');
+//   body.classList.add('body_disabled-scroll');
   
-  document.addEventListener('keydown', hidePopupByEsc);
+//   document.addEventListener('keydown', hidePopupByEsc);
 
-  popup.addEventListener('click', hidePopupOnOverlay);
-}
+//   popup.addEventListener('click', hidePopupOnOverlay);
+// }
 
-function hidePopup(popup) {
-  popup.classList.remove('popup_opened');
-  body.classList.remove('body_disabled-scroll'); 
+// function hidePopup(popup) {
+//   popup.classList.remove('popup_opened');
+//   body.classList.remove('body_disabled-scroll'); 
   
-  document.removeEventListener('keydown', hidePopupByEsc);
+//   document.removeEventListener('keydown', hidePopupByEsc);
 
-  popup.removeEventListener('click', hidePopupOnOverlay);
-}
+//   popup.removeEventListener('click', hidePopupOnOverlay);
+// }
 
-function hidePopupByEsc(event) {
-  const openedPopup = document.querySelector('.popup_opened');
-  if (event.key === 'Escape') {
-    hidePopup(openedPopup);
-  }
-}
+// function hidePopupByEsc(event) {
+//   const openedPopup = document.querySelector('.popup_opened');
+//   if (event.key === 'Escape') {
+//     hidePopup(openedPopup);
+//   }
+// }
 
-function closePopupButton(btn) {
-  const popup = btn.closest('.popup'); 
-  const popupContainer = popup.querySelector('.popup__container'); 
+// function closePopupButton(btn) {
+//   const popup = btn.closest('.popup'); 
+//   const popupContainer = popup.querySelector('.popup__container'); 
   
-  popup.addEventListener('click', () => hidePopup(popup)); 
-  popupContainer.addEventListener('click', (event) => event.stopPropagation()); 
-  btn.addEventListener('click', () => hidePopup(popup)); 
-}
+//   popup.addEventListener('click', () => hidePopup(popup)); 
+//   popupContainer.addEventListener('click', (event) => event.stopPropagation()); 
+//   btn.addEventListener('click', () => hidePopup(popup)); 
+// }
 
-function hidePopupOnOverlay(event) {
-  event.stopPropagation();
+// function hidePopupOnOverlay(event) {
+//   event.stopPropagation();
   
-  if (event.target.classList.contains('popup_opened')) {
-    hidePopup(event.target);
-  }
-}
+//   if (event.target.classList.contains('popup_opened')) {
+//     hidePopup(event.target);
+//   }
+// }
 
-function showPopupPicture(popup, name, link) {
-  showPopup(popup);
+// function showPopupPicture(popup, name, link) {
+//   showPopup(popup);
   
-  const picture = popup.querySelector('.popup__picture');
-  const caption = popup.querySelector('.popup__picture-caption');
+//   const picture = popup.querySelector('.popup__picture');
+//   const caption = popup.querySelector('.popup__picture-caption');
   
-  picture.src = link;
-  picture.alt = name;
-  caption.textContent = name;
-}
+//   picture.src = link;
+//   picture.alt = name;
+//   caption.textContent = name;
+// }
 
 function appendCard(card) {
   const element = card.getCard();
@@ -146,3 +146,13 @@ export {
   addCardPopup,
   closePopupButton
 }
+
+const cardContainer = new Section({
+  items: initialCards,
+  renderer: (cardData) => {
+    const cardElement = createCard(cardData);
+    cardContainer.addItem(cardElement);
+  }
+}, cardContainerSelector);
+
+cardContainer.renderItems();

@@ -4,19 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css" />
   <title>Mesto</title>
 </head>
 
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Логотип" />
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип" />
     </header>
 
     <section class="profile">
       <div class="profile__content">
-        <img class="profile__avatar" src="./images/image.jpg" alt="Фото" />
+        <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Фото" />
         <div class="profile__info">
           <div class="profile__item">
             <div class="profile__item-inner">
@@ -51,7 +50,7 @@
         <input type="text" class="popup__field" name="job-input" placeholder="О себе" minlength="2" maxlength="200"
           required />
         <span class="popup__error"></span>
-        <button type="submit" class="popup__submit-button popup__submit-button_disabled">Сохранить</button>
+        <button type="submit" class="popup__submit-button">Сохранить</button>
       </form>
     </div>
   </div>
@@ -66,7 +65,7 @@
         <span class="popup__error"></span>
         <input type="url" class="popup__field" name="link-input" placeholder="Ссылка" required />
         <span class="popup__error"></span>
-        <button type="submit" class="popup__submit-button popup__submit-button_disabled" disabled>Создать</button>
+        <button type="submit" class="popup__submit-button">Создать</button>
       </form>
     </div>
   </div>
@@ -89,8 +88,6 @@
       </div>
     </li>
   </template>
-
-  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
