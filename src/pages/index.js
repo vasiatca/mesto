@@ -25,15 +25,11 @@ const popupAddCard = new PopupWithForm(popupAddCardSelector, (values) => submitF
   const element = card.getCard();
 
   section.addItem(element, true);
-
-  // validatorFormAddCard.resetValidation();
 }));
 const popupEditProfile = new PopupWithForm(
   popupEditProfileSelector,
   (values) => submitFormEditProfile(values, ({ name, job }) => {
     userInfo.setUserInfo({ name, job });
-
-    // validatorFormEditProfile.resetValidation();
   })
 );
 
@@ -56,5 +52,3 @@ buttonEditPopup.addEventListener('click', () => {
   validatorFormEditProfile.enableValidation();
   popupEditProfile.open();
 });
-
-// formList.forEach(initialValidator);
