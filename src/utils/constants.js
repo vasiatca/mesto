@@ -32,26 +32,23 @@ const configSet = {
   inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__field_type_error',
   errorClass: 'popup__error_visible'
-}; 
+};
 
 const body = document.querySelector('.body');
-const cardContainer = document.querySelector('.element');
+const cardContainer = '.element';
 
 const buttonAddPopup = document.querySelector('#add-popup');
 const buttonEditPopup = document.querySelector('#edit-popup');
 
-const popupAddCard = document.querySelector('#add-card-popup');
-const popupEditProfile = document.querySelector('#edit-profile-popup');
-const popupPicture = document.querySelector('.popup_picture');
+const popupAddCardSelector = '#add-card-popup';
+const popupEditProfileSelector = '#edit-profile-popup';
+const popupPictureSelector = '.popup_picture';
 
-const formList = document.querySelectorAll('.popup__content');
 const formAddCard = document.forms['add-card'];
 const formEditProfile = document.forms['edit-profile'];
 
-const profileTitle = document.querySelector('.profile__title');
-const profileSubTitle = document.querySelector('.profile__subtitle');
-
-const buttonsClosePopup = document.querySelectorAll('.popup__close');
+const profileTitle = '.profile__title';
+const profileSubTitle = '.profile__subtitle';
 
 
 export {
@@ -61,16 +58,12 @@ export {
   cardContainer,
   buttonAddPopup,
   buttonEditPopup,
-  popupAddCard,
-  popupEditProfile,
-  popupPicture,
-  formList,
+  popupAddCardSelector,
+  popupEditProfileSelector,
+  popupPictureSelector,
   formAddCard,
   formEditProfile,
   profileTitle,
-  profileSubTitle,
-  buttonsClosePopup
+  profileSubTitle
 }
 
-const userName = document.querySelector('.profile__title');
-const userData = document.querySelector('.profile__subtitle');

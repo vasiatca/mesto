@@ -1,4 +1,4 @@
-import { body } from "../scripts/constants";
+import { body } from "../utils/constants";
 
 export default class Popup {
   constructor(popupSelector) {
@@ -11,14 +11,18 @@ export default class Popup {
   open() {
     this._popup.classList.add('popup_opened');
     this._body.classList.add('body_disabled-scroll');
+
+    document.addEventListener('keydown', this._handleEscClose);
   }
 
   close() {
     this._popup.classList.remove('popup_opened');
     this._body.classList.remove('body_disabled-scroll');
+
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
-  _handleEscClose(event) {
+  _handleEscClose = (event) => {
     if (event.key === 'Escape') {
       this.close();
     }
@@ -32,7 +36,6 @@ export default class Popup {
 
   setEventListeners() {
     this._closeButton.addEventListener('click', () => this.close());
-    document.addEventListener('keydown', (event) => this._handleEscClose(event));
     this._popup.addEventListener('click', (event) => this._hidePopupOnOverlay(event));
     this._popupContainer.addEventListener('click', (event) => event.stopPropagation());
   }

@@ -5,10 +5,7 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  addItem(item, prepend = false) {
-    const card = this._renderer(item);
-    const element = card.getCard();
-
+  addItem(element, prepend = false) {
     if (prepend) {
       this._container.prepend(element);
     } else {
@@ -18,7 +15,7 @@ export default class Section {
 
   renderItems() {
     this._items.forEach(item => {
-      this.addItem(item);
+      this._renderer(item);
     });
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "mesto",
-  "version": "1.0.0",
   "private": true,
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vasiatca/mesto"
+    "url": "git+https://github.com/vasiatca/mesto.git"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/vasiatca/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.13.15",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.15",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
