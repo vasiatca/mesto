@@ -81,9 +81,6 @@ export default class FormValidator {
     this._setInputListeners();
   }
 
-  // resetValidation() {
-  //   this._reset();
-  // }
 }
 
 

@@ -1,19 +1,7 @@
 import {
-  configSet,
   formEditProfile,
-  popupPictureSelector
 } from './constants';
-import Card from '../components/Card';
-import FormValidator from '../components/FormValidator';
-import PopupWithImage from '../components/PopupWithImage';
 
-const popup = new PopupWithImage(popupPictureSelector);
-popup.setEventListeners();
-
-function renderCard(item) {
-  const card = new Card(item, '#element__card-template', () => popup.open(item));
-  return card;
-}
 
 function submitFormAddCard(values, callback) {
   const item = {
@@ -40,7 +28,6 @@ function initialEditForm(name, job) {
 }
 
 export {
-  renderCard,
   submitFormAddCard,
   submitFormEditProfile,
   initialEditForm
