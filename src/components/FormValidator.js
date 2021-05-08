@@ -54,13 +54,8 @@ export default class FormValidator {
     }
   }
 
-
   _setInputListeners() {
-    this._reset();
-
     this._inputList.forEach((input) => {
-      // другого способа сброса ошибок не придумал
-      // если есть варианты лучше, пожалуйста, напишите
       this._checkInput(input, false);
 
       input.addEventListener('input', this._checkInputEvent);
@@ -68,13 +63,8 @@ export default class FormValidator {
     });
   }
 
-  _reset() {
+  reset() {
     this._toggleButtonState();
-
-    this._inputList.forEach((input) => {
-      input.removeEventListener('input', this._checkInputEvent);
-      input.removeEventListener('input', this._toggleButtonState);
-    });
   }
 
   enableValidation() {
