@@ -56,7 +56,7 @@ const validatorFormAddCard = new FormValidator(configSet, formAddCard);
 const validatorFormEditProfile = new FormValidator(configSet, formEditProfile);
 const validatorFormEditAvatar = new FormValidator(configSet, formUpdateAvatar);
 
-function initializationUser({ name, about, avatar, _id }) {
+function initUser({ name, about, avatar, _id }) {
   updateUser({ name, about, _id });
   updateUserAvatar({ avatar });
 }
@@ -82,7 +82,7 @@ function updateCards(item, prepend = false) {
   section.addItem(element, prepend);
 }
 
-function initializationCards(cards) {
+function renderInitialCards(cards) {
   section.renderItems(cards);
 }
 
@@ -131,14 +131,14 @@ Promise.all([
   api.getUser(),
   api.getInitialCards()
 ]).then(([user, cards]) => {
-  initializationUser(user);
-  initializationCards(cards);
+  initUser(user);
+  renderInitialCards(cards);
 });
 
-popupAddCard.setSubmitAction(async ({ name, link }) => {
+popupAddCard.setSubmitAction(({ name, link }) => {
   popupAddCard.toggleLoadingStatus(true);
 
-  await api.addNewCard({ name, link })
+  api.addNewCard({ name, link })
     .then((card) => {
       updateCards(card, true)
       popupAddCard.close();
@@ -149,24 +149,24 @@ popupAddCard.setSubmitAction(async ({ name, link }) => {
     });
 });
 
-popupEditProfile.setSubmitAction(async ({ name, about }) => {
+popupEditProfile.setSubmitAction(({ name, about }) => {
   popupEditProfile.toggleLoadingStatus(true);
 
-  await api.editUser({ name, about })
+  api.editUser({ name, about })
     .then((user) => {
       updateUser(user);
       popupEditProfile.close();
     })
     .catch(e => console.log(e))
     .finally(() => {
-      popupAvatarProfile.toggleLoadingStatus(false);
+      popupEditProfile.toggleLoadingStatus(false);
     });
 });
 
-popupAvatarProfile.setSubmitAction(async ({ avatar }) => {
+popupAvatarProfile.setSubmitAction(({ avatar }) => {
   popupAvatarProfile.toggleLoadingStatus(true);
 
-  await api.updateAvatar(avatar)
+  api.updateAvatar(avatar)
     .then((user) => {
       updateUserAvatar(user);
       popupAvatarProfile.close();
